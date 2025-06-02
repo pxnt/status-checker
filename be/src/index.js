@@ -21,7 +21,7 @@ function bootSocketServer(server) {
 }
 
 async function init() {
-  const resources = bootResources();
+  const resources = await bootResources();
   const app = bootApp();
 
   const server = http.createServer(app);
