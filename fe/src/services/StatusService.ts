@@ -5,7 +5,6 @@ import { useToast } from '~/composables/useToast';
 import { handleResponseError } from '~/utils/APIErrors';
 
 export default class StatusService {
-  private static readonly API_URL = 'http://localhost:8080';
 
   static async getComponentGroups(args: { userId: string, orgId: string }) {
     try {

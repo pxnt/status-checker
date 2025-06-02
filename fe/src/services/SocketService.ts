@@ -1,5 +1,5 @@
 import { io, Socket } from 'socket.io-client'
-import { useAuth } from '@clerk/vue'
+import { BaseEnvURLConfig } from '~/config/BaseURLs'
 
 class SocketService {
   private socket: Socket | null = null
@@ -10,7 +10,7 @@ class SocketService {
   connect() {
     try {
       // Get backend URL from environment or use default
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8080'
+      const backendUrl = BaseEnvURLConfig.API;
       
       this.socket = io(backendUrl, {
         autoConnect: true,
