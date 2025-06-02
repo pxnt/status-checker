@@ -13,30 +13,6 @@ const router = createRouter({
         layout: 'public'
       }
     },
-    {
-      path: '/status',
-      name: 'status',
-      component: () => import('~/views/Status.vue'),
-      meta: {
-        layout: 'public'
-      }
-    },
-    {
-      path: '/incidents',
-      name: 'incidents',
-      component: () => import('~/views/Incidents.vue'),
-      meta: {
-        layout: 'public'
-      }
-    },
-    {
-      path: '/metrics',
-      name: 'metrics',
-      component: () => import('~/views/Metrics.vue'),
-      meta: {
-        layout: 'public'
-      }
-    },
 
     // Dashboard routes
     {

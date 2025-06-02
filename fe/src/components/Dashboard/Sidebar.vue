@@ -36,9 +36,6 @@
           <div class="flex h-16 items-center gap-4 px-6">
             <SidebarTrigger class="-ml-1" />
             <div class="ml-auto flex items-center gap-6">
-              <Button variant="outline" size="sm">
-                New Incident
-              </Button>
               <SignedIn>
                 <div class="flex items-center space-x-3">
                   <span class="uppercase font-bold text-gray-600">
@@ -83,11 +80,13 @@ import {
 } from 'lucide-vue-next'
 import { useComponentsStore } from '~/stores/components'
 import { SignedIn, UserButton, OrganizationSwitcher, useUser, useOrganization } from '@clerk/vue'
+import { useIncidentsStore } from '~/stores/incidents'
 
 const $route = useRoute()
 const { user } = useUser()
 const { organization } = useOrganization()
 const $componentsStore = useComponentsStore()
+const $incidentsStore = useIncidentsStore()
 
 const username = computed(() => {
   const email = user.value?.primaryEmailAddress?.emailAddress
@@ -105,8 +104,7 @@ watch(() => organization.value?.id, (newOrgId, oldOrgId) => {
         window.location.reload()
       }
     }
-  },
-  { immediate: true }
+  }
 )
 
 // Navigation items
@@ -135,7 +133,7 @@ const navigationItems = computed(() => [
     title: "Incidents",
     icon: AlertTriangle,
     route: "/dashboard/incidents",
-    badge: "0",
+    badge: $incidentsStore.incidents.length,
     isActive: $route.params.tab === 'incidents'
   },
 ]);

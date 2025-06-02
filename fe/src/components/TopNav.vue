@@ -10,14 +10,6 @@
           <span class="text-xl font-bold text-gray-900">Status Checker</span>
         </router-link>
       </div>
-      <!-- Desktop Navigation -->
-      <nav class="hidden md:flex items-center space-x-8">
-        <router-link v-for="item in navigationItems" :key="item.name" :to="item.href"
-          class="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors"
-          :class="{ 'text-blue-600 font-semibold': $route.path === item.href }">
-          {{ item.name }}
-        </router-link>
-      </nav>
 
       <!-- Mobile menu button -->
       <div class="md:hidden">
@@ -26,13 +18,21 @@
         </Button>
       </div>
 
-      <div>
+      <div class="flex gap-4">
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center space-x-8">
+          <router-link v-for="item in navigationItems" :key="item.name" :to="item.href"
+            class="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-bold transition-colors"
+            :class="{ 'text-blue-600 font-semibold': $route.path === item.href }">
+            {{ item.name }}
+          </router-link>
+        </nav>
         <SignedOut>
-          <div class="flex items-center space-x-3 !cursor-pointer">
+          <div class="flex items-center space-x-3 underline">
             <div class="flex items-center space-x-2">
               <User class="h-5 w-5 text-gray-600" />
             </div>
-            <SignInButton />
+            <SignInButton class="cursor-pointer" />
           </div>
         </SignedOut>
         <SignedIn>
@@ -72,9 +72,6 @@ const { user } = useUser()
 
 const navigationItems = [
   { name: 'Dashboard', href: '/dashboard' },
-  { name: 'Status', href: '/status' },
-  { name: 'Incidents', href: '/incidents' },
-  { name: 'Metrics', href: '/metrics' },
 ]
 
 const mobileMenuOpen = ref(false)
