@@ -1,13 +1,13 @@
 import dotenv from 'dotenv';
 
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== 'prod') {
   dotenv.config();
 } else {
-  dotenv.config({ path: '.env.production' });
+  dotenv.config({ path: '.env.prod' });
 }
 
 export default {
-  env: process.env.NODE_ENV || 'development',
+  env: process.env.NODE_ENV || 'dev',
   port: process.env.PORT || 8080,
 
   supabase: {
